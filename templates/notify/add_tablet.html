@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styele_1.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome {{user}}..!</h1>
+    </header>
+    
+    <main>
+        <!-- Add Tablet Form -->
+        <section class="form-section">
+            <h2>Add a New Tablet</h2>
+            <form method="post" action="{% url 'addtablet' %}">
+                {% csrf_token %}
+                {{ tablet_form.as_p }}
+                <button type="submit" name="add_tablet">Add Tablet</button>
+            </form>
+        </section>
+
+        <section class="list-section">
+            <a href="{% url 'dashboard' %}" class="button">Record User tablets</a>
+        </section>
+
+        <section class="list-section">
+            <a href="{% url 'recordtablet' %}" class="button">Add new tablet to registry</a>
+        </section>
+
+       
+    </main>
+</body>
+</html>

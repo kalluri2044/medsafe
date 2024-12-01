@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styele_1.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome {{user}}..!</h1>
+    </header>
+    
+    <main>
+        <!-- List of User Tablet Recordings -->
+        <section class="list-section">
+            <h2>Your Tablet Usage Recordings</h2>
+            <ul>
+                {% for user_tablet in user_tablets %}
+                    <li>
+                        {{ user_tablet.tablet.name }} - 
+                        at {{ user_tablet.alarm_time }} 
+                    </li>
+                {% empty %}
+                    <li>No recordings available.</li>
+                {% endfor %}
+            </ul>
+        </section>
+        
+        <section class="list-section">
+            <a href="{% url 'recordtablet' %}" class="button">Record User tablets</a>
+        </section>
+
+        <section class="list-section">
+            <a href="{% url 'addtablet' %}" class="button">Add new tablet to registry</a>
+        </section>
+
+        <!-- Audio Element -->
+    <!-- <audio id="notification-sound" src="{% static 'sounds/notification.mp3' }" preload="auto"></audio> -->
+
+    <!-- JavaScript for Notification Sound -->
+    <!-- <script>
+        function playNotificationSound() {
+            var audio = document.getElementById('notification-sound');
+            audio.play();
+        }
+
+        // Example function to play the sound based on a condition
+        function checkNotificationTime() {
+            // You can use your logic here to determine when to play the sound
+            // For example, check time or a specific event
+            var now = new Date();
+            var targetHour = 9; // Example target hour for the notification
+
+            if (now.getHours() === `${usertablet.alarm_time}`) {
+                playNotificationSound();
+            }
+        }
+
+        // Check notification time for every 2 seconds
+        setInterval(checkNotificationTime, 2000);
+    </script> -->
+
+            
+    
+        
+    </main>
+</body>
+</html>

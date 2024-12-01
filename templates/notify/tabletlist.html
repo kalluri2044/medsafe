@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style_1.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome {{user}}..!</h1>
+    </header>
+    
+    <main>
+        <!-- List of Tablets -->
+        <section class="list-section">
+            <h2>List of Tablets</h2>
+            <ul>
+                {% for tablet in tablets %}
+                    <li>{{ tablet.name }} (Model: {{ tablet.model_number }})</li>
+                {% empty %}
+                    <li>No tablets available.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+       
+    </main>
+</body>
+</html>
